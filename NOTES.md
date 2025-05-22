@@ -14,8 +14,8 @@
 add `"tauri:dev": "npm run tauri dev"` to scripts
 
 ```shell
-$ ANDROID_HOME=/home/mario/Android
-$ NDK_HOME=/home/mario/Android/Sdk/ndk/29.0.13113456
+$ export ANDROID_HOME=/home/mario/Android
+$ export NDK_HOME=/home/mario/Android/Sdk/ndk/29.0.13113456
 
 $ npm create tauri-app@latest
 
@@ -76,3 +76,50 @@ $ npm run tauri:dev
 MESA-LOADER: failed to open dri: /run/opengl-driver/lib/gbm/dri_gbm.so: cannot open shared object file: No such file or directory (search paths /run/opengl-driver/lib/gbm, suffix _gbm)
 Failed to create GBM device for DRM node: /dev/dri/renderD128: No such file or directory
 ```
+
+## Build Android
+
+```shell
+$ npm run tauri:android:build
+
+   Compiling ident_case v1.0.1
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `aarch64-linux-android` target may not be installed
+  = help: consider downloading the target with `rustup target add aarch64-linux-android`
+
+$ rustup target add aarch64-linux-android  
+```
+
+
+
+
+
+
+
+🧩 1. Use nix-ld to patch dynamic linker support
+You can enable a Nix feature called nix-ld to allow loading external dynamic binaries:
+
+Step 1: Enable nix-ld in your system:
+In your configuration.nix:
+
+nix
+Copy
+Edit
+{
+  programs.nix-ld.enable = true;
+}
+Then rebuild your system:
+
+sh
+Copy
+Edit
+sudo nixos-rebuild switch
+Step 2: Install glibc compatibility loader:
+Install with:
+
+sh
+Copy
+Edit
+nix-shell -p nix-ld
+This provides dynamic linker fallback and lets foreign dynamically linked binaries run.
