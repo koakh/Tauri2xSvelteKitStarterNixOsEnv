@@ -54,6 +54,25 @@ Ensure your configuration.nix includes:
 And in your shell, add:
 
 ```shell
-LD_LIBRARY_PATH = "${pkgs.mesa}/lib:${pkgs.libGL}/lib:/run/opengl-driver/lib";
-LIBGL_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+# TODO:
+```
+
+```shell
+$ nix-shell
+[✔] /dev/dri available — GPU drivers should work
+$ echo $DISPLAY
+:0
+# You should see something like :0. If it's empty, you're not in a graphical session.
+
+$ npm run tauri:dev
+
+  VITE v6.3.5  ready in 1054 ms
+
+  ➜  Local:   http://localhost:1420/
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+        Info Watching /home/mario/Development/Rust/@Tauri/tauri-app-2.0/src-tauri for changes...
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.63s
+     Running `target/debug/tauri-app`
+MESA-LOADER: failed to open dri: /run/opengl-driver/lib/gbm/dri_gbm.so: cannot open shared object file: No such file or directory (search paths /run/opengl-driver/lib/gbm, suffix _gbm)
+Failed to create GBM device for DRM node: /dev/dri/renderD128: No such file or directory
 ```
