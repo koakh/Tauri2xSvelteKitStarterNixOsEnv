@@ -1,0 +1,13 @@
+Project:
+  ☐ debug rust code
+  ☐ debug svelterkit code
+  ☐ fixs trace: evaluation warning: `mesa.drivers` is deprecated, use `mesa` instead
+    added to nixos
+    
+    # optional fix for tauri apps have access to GPU
+    # https://chatgpt.com/c/682f53af-a5c4-8004-834c-42370c490630
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
