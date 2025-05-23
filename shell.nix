@@ -32,6 +32,7 @@ pkgs.mkShell {
     # Additional tools
     nodejs
     yarn
+    nodePackages_latest.pnpm
   ];
 
   # packages = [
