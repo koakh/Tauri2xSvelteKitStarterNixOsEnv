@@ -6,8 +6,8 @@
 
 ```shell
 # option #1 after load nix shell environment
-$ cd ~/Development/Rust/@Tauri/Tauri2.xNixOsEnvSvelteKitStarter
-direnv: loading ~/Development/Rust/@Tauri/Tauri2.xNixOsEnvSvelteKitStarter/.envrc
+$ cd ~/Development/Rust/@Tauri/Tauri2xSvelteKitStarterNixOsEnv
+direnv: loading ~/Development/Rust/@Tauri/Tauri2xSvelteKitStarterNixOsEnv/.envrc
 direnv: using nix
 info: component 'rust-std' for target 'aarch64-linux-android' is up to date
 info: component 'rust-std' for target 'armv7-linux-androideabi' is up to date
@@ -27,7 +27,7 @@ direnv: export +ANDROID_HOME +APPIMAGE_EXTRACT_AND_RUN +AR +AS +CC +CONFIG_SHELL
 $ code .
 
 # option #2 launch vscode and let it open nix shell environment from `.envrc`
-$ code ~/Development/Rust/@Tauri/Tauri2.xNixOsEnvSvelteKitStarter
+$ code ~/Development/Rust/@Tauri/Tauri2xSvelteKitStarterNixOsEnv
 ```
 
 ### Build Tauri App before Launch Debugger
