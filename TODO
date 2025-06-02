@@ -1,7 +1,7 @@
 Project:
-  ☐ debug rust code
-  ☐ debug svelterkit code
-  ☐ fixs trace: evaluation warning: `mesa.drivers` is deprecated, use `mesa` instead
+  ✔ debug rust code @done(25-05-26 16:33)
+  ✔ debug svelterkit code @done(25-05-26 16:33)
+  ☐ @low fixs trace: evaluation warning: `mesa.drivers` is deprecated, use `mesa` instead
     added to nixos
     
     # optional fix for tauri apps have access to GPU
@@ -11,3 +11,23 @@ Project:
       driSupport = true;
       driSupport32Bit = true;
     };
+  ☐ run android apps on phone
+  ☐ build appimage fails with xdg-open problem
+    https://claude.ai/chat/efa690e7-0db3-4c2d-8f3a-27e7caba1345
+      The issue might be that Tauri's bundling process is running in a subprocess that doesn't inherit the full environment
+    https://chatgpt.com/c/68348b16-7144-8004-bcd1-86af63ff8299
+
+
+
+    sudo ln -s $(which xdg-open) /usr/bin/xdg-open
+
+    rm ~/.cache/tauri/linuxdeploy-x86_64.AppImage
+
+    APPIMAGE_EXTRACT_AND_RUN=1 ~/.local/bin/linuxdeploy \
+    --appimage-extract-and-run \
+    --appdir ./src-tauri/target/release/bundle/appimage/tauri-20-starter-app.AppDir \
+    --plugin gtk \
+    --output appimage
+    ...
+    -- Running input plugin: gtk -- 
+    ERROR: Could not find plugin: gtk     

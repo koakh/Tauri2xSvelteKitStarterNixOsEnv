@@ -1,5 +1,5 @@
 {
-  "name": "tauri-app",
+  "name": "tauri-20-starter-app",
   "version": "0.1.0",
   "description": "",
   "type": "module",
@@ -11,8 +11,21 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "tauri": "tauri",
-    "tauri:dev": "npm run tauri dev",
-    "tauri:android:build": "export ANDROID_HOME=/home/mario/Android && export NDK_HOME=/home/mario/Android/Sdk/ndk/29.0.13113456 && npm run tauri android build"
+    "tauri:dev": "WEBKIT_DISABLE_COMPOSITING_MODE=1 TAURI_DEBUG=1 npx tauri dev",
+
+		"tauri:build": "npx tauri build",
+		"tauri:build:verbose": "nix-shell --run \"RUST_LOG=debug npx tauri build --verbose\"",
+    "tauri:build:debug": "npx tauri build --debug",
+		
+    "tauri:build:combo": "npx tauri build --bundles deb,rpm",
+    "tauri:build:appimage": "RUST_BACKTRACE=1 RUST_LOG=debug npx tauri build --bundles appimage --verbose",
+    "tauri:build:deb": "npx tauri build --bundles deb",
+    "tauri:build:rpm": "npx tauri build --bundles rpm",
+
+		"tauri:build:win": "npx tauri build --target x86_64-pc-windows-msvc",
+		"tauri:build:mac": "npx tauri build --target universal-apple-darwin",
+
+    "tauri:build:android": "export ANDROID_HOME=/home/mario/Android && export NDK_HOME=/home/mario/Android/Sdk/ndk/29.0.13113456 && npm run tauri android build"
   },
   "license": "MIT",
   "dependencies": {
@@ -23,7 +36,7 @@
     "@sveltejs/adapter-static": "^3.0.6",
     "@sveltejs/kit": "^2.9.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "svelte": "^5.33.1",
+    "svelte": "^5.33.2",
     "svelte-check": "^4.0.0",
     "typescript": "5.8.3",
     "vite": "^6.0.3",

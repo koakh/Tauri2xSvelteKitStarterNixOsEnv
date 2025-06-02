@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Tauri (GDB)",
+      "type": "gdb", 
+      "request": "launch",
+      // always replace executable filename with correct one, else debugger will not launch, check with `ls -la src-tauri/target/debug/`
+      "target": "${workspaceFolder}/src-tauri/target/debug/tauri-20-starter-app",
+      "cwd": "${workspaceFolder}",
+      "valuesFormatting": "parseText",
+      "env": {
+        "LIBGL_ALWAYS_SOFTWARE": "1",
+        "WEBKIT_DISABLE_COMPOSITING_MODE": "1",
+        "TAURI_DEBUG": "1"
+      },
+      // Remove preLaunchTask - if we want to start `tauri:dev` manually  before launch this config
+      // else if we already have launched `npm run tauri:dev` we get a error `Error: Port 1420 is already in use`
+      // because bellow "preLaunchTask" task will try to launch frontend again
+      "preLaunchTask": "ui:dev"
+    },
+    {
+      "name": "Launch Tauri in Browser",
+      "type": "chrome",
+      "request": "launch", 
+      "url": "http://localhost:1420",
+      "webRoot": "${workspaceFolder}/src",
+      "linux": {
+        "runtimeExecutable": "/nix/store/nbkvpkaljqviparblsi6kx259pn3bchb-user-environment/bin/brave"
+      }
+    }
+  ]
+}

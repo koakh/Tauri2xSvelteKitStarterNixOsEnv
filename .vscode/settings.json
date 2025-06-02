@@ -1,3 +1,10 @@
 {
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "cSpell.words": [
+    "appimage",
+    "LIBGL",
+    "linuxdeploy",
+    "msvc"
+  ],
+  "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix"
 }
