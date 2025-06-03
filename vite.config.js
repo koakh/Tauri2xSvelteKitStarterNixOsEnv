@@ -32,4 +32,8 @@ export default defineConfig(async () => ({
   build: {
     sourcemap: true,
   },
+  css: {
+    // Enable CSS source maps in dev
+    devSourcemap: true
+  },
 }));
